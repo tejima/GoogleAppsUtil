@@ -3,10 +3,9 @@ function onEdit(event)
 
   var keywordCol = 1;
   var columnStart = 1;
-  var columnNum = 25;
+  var columnNum = 100;
   var range = event.source.getActiveRange();
   var rowidx = range.getRow();
-
   
   var sheet = event.source.getActiveSheet();
   switch(sheet.getRange(rowidx, keywordCol).getValue()){
@@ -15,10 +14,18 @@ function onEdit(event)
       break;
     case 'PRJ':
     case 'PROJECT':
+    case 'BLUE':
+    case 'B':
       sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('blue');  
       sheet.getRange(rowidx, columnStart, 1, columnNum).setFontColor('white');  
       break;
+    case 'G':
+      sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('green');  
+      sheet.getRange(rowidx, columnStart, 1, columnNum).setFontColor('white');  
+      break;
     case 'NAVI':
+    case 'RED':
+    case 'R':
       sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('red');  
       sheet.getRange(rowidx, columnStart, 1, columnNum).setFontColor('white');
       break;
