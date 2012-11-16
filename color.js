@@ -56,4 +56,24 @@ function onEdit(event)
       sheet.getRange(rowidx, columnStart, 1, 1).setBackgroundColor('white');
       sheet.getRange(rowidx, columnStart, 1, 1).setFontColor('black');  
   }
+  
+  
+function updateTitle(){
+  var sheet = SpreadsheetApp.getActiveSheet();  
+  for(var i=1;i<100;i++){
+    var url = sheet.getRange(i, 10).getValue();
+    var title = getTitle(url);
+    sheet.getRange(i, 11).setValue(title);
+  }
+}
+function getTitle(url) {
+  if(url.indexOf("http") != 0){
+    return "";
+  }  
+  var txt = UrlFetchApp.fetch(url).getContentText();
+  var doc = Xml.parse(txt, true);  
+  var title = doc.html.head.title.getText();
+  return title;
+}
+  
 }
