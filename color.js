@@ -36,6 +36,7 @@ function onEdit(event)
       break;
     case 'CLEAR':
     case 'C':
+    case 'W':
       sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('white');
       sheet.getRange(rowidx, columnStart, 1, columnNum).setFontColor('black');  
       break;
@@ -46,6 +47,11 @@ function onEdit(event)
     case 'PLANNING':
       sheet.getRange(rowidx, columnStart, 1, 1).setBackgroundColor('green');
       break;
+    case 'A':
+      sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('IndianRed');
+      break;
+
+  
     default:
       sheet.getRange(rowidx, columnStart, 1, 1).setBackgroundColor('white');
       sheet.getRange(rowidx, columnStart, 1, 1).setFontColor('black');  
