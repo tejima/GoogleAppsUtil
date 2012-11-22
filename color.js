@@ -12,6 +12,11 @@ function onEdit(event)
     case 'DONE':
     sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('gray');
       break;
+    case 'L':
+    case 'LIGHTGRAY':
+    sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('lightgray');
+      break;
+      
     case 'PRJ':
     case 'PROJECT':
     case 'BLUE':
