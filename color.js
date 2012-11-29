@@ -62,7 +62,7 @@ function onEdit(event)
       sheet.getRange(rowidx, columnStart, 1, 1).setFontColor('black');  
   }
   
-  
+}
 function updateTitle(){
   var sheet = SpreadsheetApp.getActiveSheet();  
   for(var i=1;i<100;i++){
@@ -80,5 +80,4 @@ function getTitle(url) {
   var title = doc.html.head.title.getText();
   return title;
 }
-  
-}
+
