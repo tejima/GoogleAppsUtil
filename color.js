@@ -10,11 +10,12 @@ function onEdit(event)
   var sheet = event.source.getActiveSheet();
   switch(sheet.getRange(rowidx, keywordCol).getValue()){
     case 'DONE':
-    sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('gray');
+      sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('gray');
       break;
     case 'L':
     case 'LIGHTGRAY':
-    sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('lightgray');
+      sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('lightgray');
+      sheet.getRange(rowidx, columnStart, 1, columnNum).setFontColor('black');  
       break;
       
     case 'PRJ':
@@ -56,13 +57,12 @@ function onEdit(event)
       sheet.getRange(rowidx, columnStart, 1, columnNum).setBackgroundColor('IndianRed');
       break;
 
-  
     default:
       sheet.getRange(rowidx, columnStart, 1, 1).setBackgroundColor('white');
       sheet.getRange(rowidx, columnStart, 1, 1).setFontColor('black');  
   }
   
-}
+  
 function updateTitle(){
   var sheet = SpreadsheetApp.getActiveSheet();  
   for(var i=1;i<100;i++){
@@ -80,4 +80,5 @@ function getTitle(url) {
   var title = doc.html.head.title.getText();
   return title;
 }
-
+  
+}
