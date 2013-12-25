@@ -44,7 +44,7 @@ function onEdit(event)
     case 'KIMIDORI':
     case 'KAIZEN':
       sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('lightgreen');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
       break;
 
     case 'CLEAR':
