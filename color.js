@@ -23,7 +23,6 @@ function onEdit(event)
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
       break;
 
-
     case 'D':
       sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('deeppink');
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
@@ -56,14 +55,11 @@ function onEdit(event)
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
       break;
 
-
-
     case 'L':
     case 'LIGHTGRAY':
       sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('lightgray');
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
       break;
-
 
     case 'K':
     case 'KIMIDORI':
@@ -72,21 +68,14 @@ function onEdit(event)
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
       break;
 
-
     case 'ACTIVE':
       sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('red');
       break;
-
-
 
     case 'P':
       sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('pink');
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
       break;
-
-
-
-
 
     default:
       sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('white');
@@ -95,9 +84,8 @@ function onEdit(event)
 }
 
 function updateTitle(){
-  var sheet = SpreadsheetApp.getActiveSheet();
   for(var i=1;i<100;i++){
-    var url = sheet.getRange(i, 10).getValue();
+    var url = SpreadsheetApp.getActiveSheet().getRange(i, 10).getValue();
     var title = getTitle(url);
     sheet.getRange(i, 11).setValue(title);
   }
@@ -111,4 +99,60 @@ function getTitle(url) {
   var doc = Xml.parse(txt, true);
   var title = doc.html.head.title.getText();
   return title;
+}
+
+//-------------------------------------
+
+var mailto = "test@example.com";
+
+var title_row = 9;
+var title_col = 2;
+
+var timer_row = 1;
+var timer_col = 3;
+
+var canvas_row = 2;
+var canvas_col = 3;
+
+
+function updateTimer(){
+  
+  var value = SpreadsheetApp.getActiveSheet().getRange(timer_row, timer_col).getValue();
+  if("STOP" == value){
+    renderTimer("STOP");
+    return;
+  }
+  value = value + 1;
+  switch(value){
+    case 30:
+      var message = value + "分終了:" + SpreadsheetApp.getActiveSheet().getRange(title_row, title_col).getValue();
+//      MailApp.sendEmail(mailto,message,message);
+      value = "STOP";
+      break;
+    case 25:
+      var message = value + "分終了:" + SpreadsheetApp.getActiveSheet().getRange(title_row, title_col).getValue();
+//      MailApp.sendEmail(mailto,message,message);
+      break;
+  }
+  renderTimer(value);
+  Logger.log(value + " DONE");
+}
+
+function renderTimer(time){
+  SpreadsheetApp.getActiveSheet().getRange(timer_row, timer_col).setValue(time);
+  if("STOP" == time){
+    time = 30;
+  }
+  
+  SpreadsheetApp.getActiveSheet().getRange(canvas_row,canvas_col,6,5).setValue(""); //clear cell 
+  var amari = time % 5;
+  var shou = (time-amari)/5;
+  
+  if(0 < shou){
+    SpreadsheetApp.getActiveSheet().getRange(canvas_row,canvas_col,shou,5).setValue("●");  
+  }
+  if(0 < amari){
+    SpreadsheetApp.getActiveSheet().getRange(canvas_row+shou,canvas_col,1,amari).setValue("●");    
+  }  
+  Logger.log("RENDER DONE:" + shou + ":" + amari);
 }
