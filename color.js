@@ -72,6 +72,10 @@ function onEdit(event)
       sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('red');
       break;
 
+    case 'PAUSE':
+      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('yellow');
+      break;
+
     case 'P':
       sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('pink');
       sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
