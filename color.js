@@ -3,69 +3,70 @@ function onEdit(event)
   var range = event.source.getActiveRange();
   var rowidx = range.getRow();
   var sheet = event.source.getActiveSheet();
+  var range_paint = sheet.getRange(rowidx + ":" + rowidx);
   switch(sheet.getRange(rowidx, 1).getValue().toUpperCase()){
     case 'A':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('IndianRed');
+      range_paint.setBackgroundColor('IndianRed');
       break;
 
     case 'BLUE':
     case 'B':
     case 'PRJ':
     case 'PROJECT':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('blue');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      range_paint.setBackgroundColor('blue');
+      range_paint.setFontColor('white');
       break;
 
     case 'CLEAR':
     case 'C':
     case 'W':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('white');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
+      range_paint.setBackgroundColor('white');
+      range_paint.setFontColor('black');
       break;
 
     case 'D':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('deeppink');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      range_paint.setBackgroundColor('deeppink');
+      range_paint.setFontColor('white');
       break;
 
     case 'DONE':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('gray');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
+      range_paint.setBackgroundColor('gray');
+      range_paint.setFontColor('black');
       break;
 
     case 'E':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('yellow');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
+      range_paint.setBackgroundColor('yellow');
+      range_paint.setFontColor('black');
       break;
 
     case 'F':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('forestgreen');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      range_paint.setBackgroundColor('forestgreen');
+      range_paint.setFontColor('white');
       break;
 
     case 'G':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('green');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      range_paint.setBackgroundColor('green');
+      range_paint.setFontColor('white');
       break;
 
     case 'NAVI':
     case 'RED':
     case 'R':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('red');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      range_paint.setBackgroundColor('red');
+      range_paint.setFontColor('white');
       break;
 
     case 'L':
     case 'LIGHTGRAY':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('lightgray');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
+      range_paint.setBackgroundColor('lightgray');
+      range_paint.setFontColor('black');
       break;
 
     case 'K':
     case 'KIMIDORI':
     case 'KAIZEN':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('lightgreen');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('black');
+      range_paint.setBackgroundColor('lightgreen');
+      range_paint.setFontColor('black');
       break;
 
     case 'ACTIVE':
@@ -77,8 +78,8 @@ function onEdit(event)
       break;
 
     case 'P':
-      sheet.getRange(rowidx + ":" + rowidx).setBackgroundColor('pink');
-      sheet.getRange(rowidx + ":" + rowidx).setFontColor('white');
+      range_paint.setBackgroundColor('pink');
+      range_paint.setFontColor('white');
       break;
 
     default:
