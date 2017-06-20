@@ -1,9 +1,10 @@
-function onEdit(event)
-{
+
+function onEdit(event) {
   var range = event.source.getActiveRange();
   var rowidx = range.getRow();
   var sheet = event.source.getActiveSheet();
-  var range_paint = sheet.getRange(rowidx + ":" + rowidx);
+  var range_paint = sheet.getRange(rowidx + ':' + rowidx);
+
   switch(sheet.getRange(rowidx, 1).getValue().toUpperCase()){
     case 'A':
       range_paint.setBackgroundColor('IndianRed');
@@ -88,27 +89,7 @@ function onEdit(event)
   }
 }
 
-function updateTitle(){
-  for(var i=1;i<100;i++){
-    var url = SpreadsheetApp.getActiveSheet().getRange(i, 10).getValue();
-    var title = getTitle(url);
-    sheet.getRange(i, 11).setValue(title);
-  }
-}
-
-function getTitle(url) {
-  if(url.indexOf("http") !== 0){
-    return "";
-  }
-  UrlFetchApp.fetch(url).getContentText();
-  var doc = Xml.parse(txt, true);
-  var title = doc.html.head.title.getText();
-  return title;
-}
-
 //-------------------------------------
-
-var mailto = "test@example.com";
 
 var title_row = 9;
 var title_col = 2;
