@@ -53,6 +53,10 @@ function onEdit(event) {
       range_paint.setFontColor('black');
       break;
 
+    case 'N':
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowAfter(rowidx);
+      
     case 'K':
       range_paint.setBackgroundColor('lightgreen');
       range_paint.setFontColor('black');
