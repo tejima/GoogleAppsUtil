@@ -10,10 +10,7 @@ function onEdit(event) {
       range_paint.setBackgroundColor('IndianRed');
       break;
 
-    case 'BLUE':
     case 'B':
-    case 'PRJ':
-    case 'PROJECT':
       range_paint.setBackgroundColor('blue');
       range_paint.setFontColor('white');
       break;
@@ -26,10 +23,6 @@ function onEdit(event) {
       break;
 
     case 'D':
-      range_paint.setBackgroundColor('deeppink');
-      range_paint.setFontColor('white');
-      break;
-
     case 'DONE':
       range_paint.setBackgroundColor('gray');
       range_paint.setFontColor('black');
@@ -50,22 +43,17 @@ function onEdit(event) {
       range_paint.setFontColor('white');
       break;
 
-    case 'NAVI':
-    case 'RED':
     case 'R':
       range_paint.setBackgroundColor('red');
       range_paint.setFontColor('white');
       break;
 
     case 'L':
-    case 'LIGHTGRAY':
       range_paint.setBackgroundColor('lightgray');
       range_paint.setFontColor('black');
       break;
 
     case 'K':
-    case 'KIMIDORI':
-    case 'KAIZEN':
       range_paint.setBackgroundColor('lightgreen');
       range_paint.setFontColor('black');
       break;
@@ -79,10 +67,10 @@ function onEdit(event) {
       break;
 
     case 'P':
-      range_paint.setBackgroundColor('pink');
+      range_paint.setBackgroundColor('deeppink');
       range_paint.setFontColor('white');
       break;
-
+      
     default:
       sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('white');
       sheet.getRange(rowidx, 1, 1, 1).setFontColor('black');
