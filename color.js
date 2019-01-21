@@ -1,13 +1,12 @@
-
 function onEdit(event) {
-  var range = event.source.getActiveRange();
-  var rowidx = range.getRow();
-  var sheet = event.source.getActiveSheet();
-  var range_paint = sheet.getRange(rowidx + ':' + rowidx);
+  var rowidx = SpreadsheetApp.getActiveRange().getRow();
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var range_paint = sheet.getRange(rowidx + ':' + rowidx); //塗るのは行全体
 
-  switch(sheet.getRange(rowidx, 1).getValue().toUpperCase()){
+  switch(sheet.getRange(rowidx, 1).getValue().toUpperCase()){ //先頭行の記号が、、、、
     case 'A':
       range_paint.setBackgroundColor('IndianRed');
+      range_paint.setFontColor('black');
       break;
 
     case 'B':
@@ -17,87 +16,6 @@ function onEdit(event) {
 
     case 'CLEAR':
     case 'C':
-    case 'W':
-      range_paint.setBackgroundColor('white');
-      range_paint.setFontColor('black');
-      sheet.getRange(rowidx, 1).setValue('');      
-      break;
-
-    case 'D':
-    case 'DONE':
-      range_paint.setBackgroundColor('gray');
-      range_paint.setFontColor('black');
-      break;
-
-    case 'E':
-      range_paint.setBackgroundColor('yellow');
-      range_paint.setFontColor('black');
-      break;
-
-    case 'F':
-      range_paint.setBackgroundColor('forestgreen');
-      range_paint.setFontColor('white');
-      break;
-
-    case 'G':
-      range_paint.setBackgroundColor('green');
-      range_paint.setFontColor('white');
-      break;
-
-    case 'R':
-      range_paint.setBackgroundColor('red');
-      range_paint.setFontColor('white');
-      break;
-
-    case 'L':
-      range_paint.setBackgroundColor('lightgray');
-      range_paint.setFontColor('black');
-      break;
-
-    case 'K':
-      range_paint.setBackgroundColor('lightgreen');
-      range_paint.setFontColor('black');
-      break;
-
-    case 'ACTIVE':
-      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('red');
-      break;
-
-    case 'PAUSE':
-      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('yellow');
-      break;
-
-    case 'P':
-      range_paint.setBackgroundColor('deeppink');
-      range_paint.setFontColor('white');
-      break;
-      
-    default:
-      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('white');
-      sheet.getRange(rowidx, 1, 1, 1).setFontColor('black');
-  }
-}
-
-
-function onEdit(event) {
-  var range = event.source.getActiveRange();
-  var rowidx = range.getRow();
-  var sheet = event.source.getActiveSheet();
-  var range_paint = sheet.getRange(rowidx + ':' + rowidx);
-
-  switch(sheet.getRange(rowidx, 1).getValue().toUpperCase()){
-    case 'A':
-      range_paint.setBackgroundColor('IndianRed');
-      break;
-
-    case 'B':
-      range_paint.setBackgroundColor('blue');
-      range_paint.setFontColor('white');
-      break;
-
-    case 'CLEAR':
-    case 'C':
-    case 'W':
       range_paint.setBackgroundColor('white');
       range_paint.setFontColor('black');
       sheet.getRange(rowidx, 1).setValue('');
@@ -139,22 +57,24 @@ function onEdit(event) {
       range_paint.setFontColor('black');
       break;
 
-    case 'ACTIVE':
-      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('red');
-      break;
-
-    case 'PAUSE':
-      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('yellow');
-      break;
-
     case 'P':
       range_paint.setBackgroundColor('deeppink');
       range_paint.setFontColor('white');
       break;
       
-    default:
-      sheet.getRange(rowidx, 1, 1, 1).setBackgroundColor('white');
-      sheet.getRange(rowidx, 1, 1, 1).setFontColor('black');
+    case 'Z': //SUPER DONE
+      var raw_values = sheet.getRange(rowidx,1,1,sheet.getLastColumn()).getValues();
+      sheet.appendRow(raw_values[0]);
+      sheet.deleteRow(rowidx);
+      var rowidx_last = sheet.getLastRow();
+      var range_last = sheet.getRange(rowidx_last + ':' + rowidx_last);
+
+      range_last.setBackgroundColor('gray');
+      range_last.setFontColor('black');
+
+      break;
+            
+    default: //DO NOTHING
   }
 }
 
@@ -169,38 +89,15 @@ function line_insert_5(){
 }
 
 function line_insert_x(num){  
-  var spreadsheet = SpreadsheetApp.getActive();
-  var sheet = spreadsheet.getActiveSheet();
-  spreadsheet.getActiveSheet().insertRowsAfter(spreadsheet.getActiveRange().getLastRow(), num);
+  var sheet = SpreadsheetApp.getActiveSheet();
+  sheet.insertRowsAfter(sheet.getActiveRange().getLastRow(), num);
 }
 
 function onOpen() {
   SpreadsheetApp.getUi()
   .createMenu("GoogleAppsUtil")
-  .addItem("行追加1", "line_insert_1")
-  .addItem("行追加3", "line_insert_3")
-  .addItem("行追加5", "line_insert_5")
+  .addItem("1行追加", "line_insert_1")
+  .addItem("3行追加", "line_insert_3")
+  .addItem("5行追加", "line_insert_5")
   .addToUi();
 }
-
-
-//-------------------------------------
-
-var title_row = 9;
-var title_col = 2;
-
-var timer_row = 1;
-var timer_col = 3;
-
-var canvas_row = 2;
-var canvas_col = 3;
-//-------------------------------------
-
-var title_row = 9;
-var title_col = 2;
-
-var timer_row = 1;
-var timer_col = 3;
-
-var canvas_row = 2;
-var canvas_col = 3;
