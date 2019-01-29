@@ -116,6 +116,22 @@ function onEdit(event) {
       sheet.deleteRow(rowidx);
       break;
       
+    case 'XX': //DELETE 2 LINES 
+      sheet.deleteRows(rowidx,2);
+      break;
+
+    case 'XXX': //DELETE 3 LINES
+      sheet.deleteRows(rowidx,3);
+      break;
+      
+    case 'XXXX': //DELETE 4 LINES
+      sheet.deleteRows(rowidx,4);
+      break;
+
+    case 'XXXXX': //DELETE 5 LINES
+      sheet.deleteRows(rowidx,5);
+      break;
+      
     case 'Z': //SUPER DONE
       var raw_values = sheet.getRange(rowidx,1,1,sheet.getLastColumn()).getValues();
       sheet.appendRow(raw_values[0]);
