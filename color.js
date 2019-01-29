@@ -61,6 +61,60 @@ function onEdit(event) {
       range_paint.setBackgroundColor('deeppink');
       range_paint.setFontColor('white');
       break;
+
+    case 'BB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,1);
+      break;
+
+    case 'BBB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,2);
+      break;
+
+    case 'BBBB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,3);
+      break;
+
+    case 'BBBBB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,4);
+      break;
+
+    case 'BBBBBB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,5);
+      break;
+
+    case 'AA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,1);
+      break;
+
+    case 'AAA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,2);
+      break;
+
+    case 'AAAA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,3);
+      break;
+ 
+    case 'AAAAA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,4);
+      break;
+
+    case 'AAAAAA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,5);
+      break;
+ 
+    case 'X': //DELETE LINE
+      sheet.deleteRow(rowidx);
+      break;
       
     case 'Z': //SUPER DONE
       var raw_values = sheet.getRange(rowidx,1,1,sheet.getLastColumn()).getValues();
@@ -71,7 +125,6 @@ function onEdit(event) {
 
       range_last.setBackgroundColor('gray');
       range_last.setFontColor('black');
-
       break;
             
     default: //DO NOTHING
