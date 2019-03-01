@@ -87,6 +87,17 @@ function onEdit(event) {
       sheet.insertRowsBefore(rowidx,5);
       break;
 
+    case 'BBBBBBB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,6);
+      break;
+
+    case 'BBBBBBBB': //INSERT LINE BEFORE
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,7);
+      break;
+
+      
     case 'AA': //INSERT LINE AFTER
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,1);
@@ -111,7 +122,17 @@ function onEdit(event) {
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,5);
       break;
- 
+    
+    case 'AAAAAAA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,6);
+      break;
+
+    case 'AAAAAAAA': //INSERT LINE AFTER
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,7);
+      break;
+
     case 'X': //DELETE LINE
       sheet.deleteRow(rowidx);
       break;
@@ -131,7 +152,15 @@ function onEdit(event) {
     case 'XXXXX': //DELETE 5 LINES
       sheet.deleteRows(rowidx,5);
       break;
-      
+
+    case 'XXXXXX': //DELETE 6 LINES
+      sheet.deleteRows(rowidx,6);
+      break;
+
+    case 'XXXXXXX': //DELETE 7 LINES
+      sheet.deleteRows(rowidx,7);
+      break;
+
     case 'Z': //SUPER DONE
       var raw_values = sheet.getRange(rowidx,1,1,sheet.getLastColumn()).getValues();
       sheet.appendRow(raw_values[0]);
