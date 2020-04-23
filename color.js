@@ -4,11 +4,6 @@ function onEdit(event) {
   var range_paint = sheet.getRange(rowidx + ':' + rowidx); //塗るのは行全体
 
   switch(sheet.getRange(rowidx, 1).getValue().toUpperCase()){ //先頭行の記号が、、、、
-    case 'A':
-      range_paint.setBackgroundColor('IndianRed');
-      range_paint.setFontColor('black');
-      break;
-
     case 'B':
       range_paint.setBackgroundColor('blue');
       range_paint.setFontColor('white');
@@ -62,102 +57,129 @@ function onEdit(event) {
       range_paint.setFontColor('white');
       break;
 
-    case 'BB': //INSERT LINE BEFORE
-      sheet.getRange(rowidx, 1).setValue('');
-      sheet.insertRowsBefore(rowidx,1);
-      break;
-
-    case 'BBB': //INSERT LINE BEFORE
+    //INSERT LINE BEFORE
+    case 'BB': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsBefore(rowidx,2);
       break;
 
-    case 'BBBB': //INSERT LINE BEFORE
+    case 'BBB': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsBefore(rowidx,3);
       break;
 
-    case 'BBBBB': //INSERT LINE BEFORE
+    case 'BBBB': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsBefore(rowidx,4);
       break;
 
-    case 'BBBBBB': //INSERT LINE BEFORE
+    case 'BBBBB': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsBefore(rowidx,5);
       break;
 
-    case 'BBBBBBB': //INSERT LINE BEFORE
+    case 'BBBBBB': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsBefore(rowidx,6);
       break;
 
-    case 'BBBBBBBB': //INSERT LINE BEFORE
+    case 'BBBBBBB': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsBefore(rowidx,7);
       break;
 
-      
-    case 'AA': //INSERT LINE AFTER
+    case 'BBBBBBBB': 
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,8);
+      break;
+
+    case 'BBBBBBBBB': 
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,9);
+      break;
+
+    case 'BBBBBBBBBB': 
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsBefore(rowidx,10);
+      break;
+
+    //INSERT LINE AFTER
+    case 'A': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,1);
       break;
 
-    case 'AAA': //INSERT LINE AFTER
+    case 'AA': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,2);
       break;
 
-    case 'AAAA': //INSERT LINE AFTER
+    case 'AAA': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,3);
       break;
- 
-    case 'AAAAA': //INSERT LINE AFTER
+
+    case 'AAAA': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,4);
       break;
-
-    case 'AAAAAA': //INSERT LINE AFTER
+ 
+    case 'AAAAA': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,5);
       break;
-    
-    case 'AAAAAAA': //INSERT LINE AFTER
+
+    case 'AAAAAA': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,6);
       break;
-
-    case 'AAAAAAAA': //INSERT LINE AFTER
+    
+    case 'AAAAAAA': 
       sheet.getRange(rowidx, 1).setValue('');
       sheet.insertRowsAfter(rowidx,7);
       break;
 
-    case 'X': //DELETE LINE
+    case 'AAAAAAAA': 
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,8);
+      break;
+
+    case 'AAAAAAAAA': 
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,9);
+    break;
+
+    case 'AAAAAAAAAA': 
+      sheet.getRange(rowidx, 1).setValue('');
+      sheet.insertRowsAfter(rowidx,10);
+    break;
+
+    //DELETE LINE
+    case 'X':
       sheet.deleteRow(rowidx);
       break;
       
-    case 'XX': //DELETE 2 LINES 
+    case 'XX':
       sheet.deleteRows(rowidx,2);
       break;
 
-    case 'XXX': //DELETE 3 LINES
+    case 'XXX':
       sheet.deleteRows(rowidx,3);
       break;
       
-    case 'XXXX': //DELETE 4 LINES
+    case 'XXXX':
       sheet.deleteRows(rowidx,4);
       break;
 
-    case 'XXXXX': //DELETE 5 LINES
+    case 'XXXXX':
       sheet.deleteRows(rowidx,5);
       break;
 
-    case 'XXXXXX': //DELETE 6 LINES
+    case 'XXXXXX':
       sheet.deleteRows(rowidx,6);
       break;
 
-    case 'XXXXXXX': //DELETE 7 LINES
+    case 'XXXXXXX':
       sheet.deleteRows(rowidx,7);
       break;
 
@@ -176,26 +198,32 @@ function onEdit(event) {
   }
 }
 
-function line_insert_1(){
-  line_insert_x(1);
-}
-function line_insert_3(){
-  line_insert_x(3);
-}
 function line_insert_5(){
   line_insert_x(5);
 }
 
+function line_insert_10(){
+  line_insert_x(10);
+}
+
+function line_insert_20(){
+  line_insert_x(20);
+}
+
+function line_insert_40(){
+  line_insert_x(40);
+}
+
 function line_insert_x(num){  
-  var sheet = SpreadsheetApp.getActiveSheet();
-  sheet.insertRowsAfter(sheet.getActiveRange().getLastRow(), num);
+  SpreadsheetApp.getActiveSheet().insertRowsAfter(sheet.getActiveRange().getLastRow(), num);
 }
 
 function onOpen() {
   SpreadsheetApp.getUi()
   .createMenu("GoogleAppsUtil")
-  .addItem("1行追加", "line_insert_1")
-  .addItem("3行追加", "line_insert_3")
   .addItem("5行追加", "line_insert_5")
+  .addItem("10行追加", "line_insert_10")
+  .addItem("20行追加", "line_insert_20")
+  .addItem("40行追加", "line_insert_40")
   .addToUi();
 }
