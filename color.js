@@ -215,7 +215,8 @@ function line_insert_40(){
 }
 
 function line_insert_x(num){  
-  SpreadsheetApp.getActiveSheet().insertRowsAfter(sheet.getActiveRange().getLastRow(), num);
+  var sheet = SpreadsheetApp.getActiveSheet(); 
+  sheet.insertRowsAfter(sheet.getActiveRange().getLastRow(), num);
 }
 
 function onOpen() {
